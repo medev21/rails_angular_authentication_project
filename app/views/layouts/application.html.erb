@@ -7,8 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body ng-app="angular-auth-app">
-
-<%= yield %>
+  <div ng-include="'angular-app/nav/nav.html'"></div>
+  <%= yield %>
 
 </body>
 </html>

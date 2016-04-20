@@ -1,4 +1,4 @@
-angular.module('angular-auth-app', ['ngRoute', 'ngResource'])
+angular.module('angular-auth-app', ['ngRoute', 'ngResource','templates'])
        .config(['$routeProvider', function($routeProvider){
          $routeProvider.when('/',{
            controller: "HomeCtrl"
