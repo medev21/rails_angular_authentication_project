@@ -17,5 +17,7 @@
 //= require angular-route
 //= require angular-resource
 //= require angular-rails-templates
+//= require angular-cookie
+//= require ng-token-auth
 //= require turbolinks
 //= require_tree .
