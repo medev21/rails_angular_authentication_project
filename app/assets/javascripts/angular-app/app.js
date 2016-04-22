@@ -1,5 +1,10 @@
 angular.module('angular-auth-app', ['ngRoute', 'ngResource','templates', 'ng-token-auth'])
-       .config(['$routeProvider', function($routeProvider){
+       .config(['$routeProvider', '$authProvider', function($routeProvider, $authProvider){
+
+         $authProvider.configure({
+           //defaults are ok for now
+         });
+
          $routeProvider.when('/',{
            controller: "HomeCtrl"
          }).when('/:status', {
@@ -7,4 +12,5 @@ angular.module('angular-auth-app', ['ngRoute', 'ngResource','templates', 'ng-tok
          }).otherwise({
            redirectTo: '/'
          });
+
        }]);
