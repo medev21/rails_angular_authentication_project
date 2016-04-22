@@ -1,4 +1,4 @@
-angular.module('angular-auth-app', ['ngRoute', 'ngResource','templates', 'ng-token-auth'])
+angular.module('angular-auth-app', ['ngRoute', 'ngResource','templates', 'ng-token-auth', 'ngAnimate'])
        .config(['$routeProvider', '$authProvider', function($routeProvider, $authProvider){
 
          $authProvider.configure({
