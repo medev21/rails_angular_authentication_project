@@ -19,6 +19,7 @@
 //= require angular-rails-templates
 //= require angular-animate
 //= require angular-cookie
+//= require angular-cookies
 //= require ng-token-auth
 //= require turbolinks
 //= require_tree .
