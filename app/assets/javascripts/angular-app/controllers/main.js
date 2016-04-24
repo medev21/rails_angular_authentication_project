@@ -1,5 +1,10 @@
 angular.module('angular-auth-app')
-       .controller('MainCtrl',['Post', '$rootScope', '$scope', function(Post, $rootScope, $scope){
+       .controller('MainCtrl',[
+         'Post',
+         '$rootScope',
+         '$scope',
+         '$location',
+         function(Post, $rootScope, $scope, $location){
 
         //  $scope.hello = "hello world";
         // $scope.posts = Post.query();
@@ -19,6 +24,7 @@ angular.module('angular-auth-app')
 
         // when the user logs in, fetch the posts
         $rootScope.$on('auth:login-success', function(ev, user) {
+          $location.path("/");
           post_query();
         });
 
