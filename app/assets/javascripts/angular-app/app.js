@@ -6,10 +6,23 @@ angular.module('angular-auth-app', [
   'ng-token-auth',
   'ngAnimate',
   'ngCookies',])
-  .config(['$routeProvider', '$authProvider', function($routeProvider, $authProvider){
+  .constant('baseUrl', 'http://localhost:3000')
+  .config(['baseUrl','$routeProvider', '$authProvider', function(baseUrl, $routeProvider, $authProvider){
 
          $authProvider.configure({
-           //defaults are ok for now
+           apiUrl: baseUrl + '/api',
+
+          handleLoginResponse: function(response) {
+            return response;
+          },
+
+          // handleAccountUpdateResponse: function(response) {
+          //   return response;
+          // },
+
+          handleTokenValidationResponse: function(response) {
+            return response;
+          }
          });
 
          $routeProvider.when('/',{

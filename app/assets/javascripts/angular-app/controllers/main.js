@@ -33,6 +33,21 @@ angular.module('angular-auth-app')
          $scope.posts = null;
        });
 
+       $rootScope.$on('auth:registration-email-success', function(ev, message) {
+          // alert("A registration email was sent to " + message.email);
+          post_query();
+
+          $location.path("/");
+        });
+
+        $rootScope.$on('auth:validation-success', function(ev, userData) {
+          // console.log("validation event: ", ev);
+          // console.log("validation: ", userData);
+          post_query();
+
+        });
+
+
        // will get a "401 Unauthorized" if the user is not authenticated
         post_query();
 
