@@ -1,5 +1,12 @@
-angular.module('angular-auth-app', ['ngRoute', 'ngResource','templates', 'ng-token-auth', 'ngAnimate', 'ngCookies'])
-       .config(['$routeProvider', '$authProvider', function($routeProvider, $authProvider){
+angular.module('angular-auth-app', [
+  'ui.bootstrap',
+  'ngRoute',
+  'ngResource',
+  'templates',
+  'ng-token-auth',
+  'ngAnimate',
+  'ngCookies',])
+  .config(['$routeProvider', '$authProvider', function($routeProvider, $authProvider){
 
          $authProvider.configure({
            //defaults are ok for now
