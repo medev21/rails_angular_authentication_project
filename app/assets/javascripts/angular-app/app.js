@@ -7,7 +7,12 @@ angular.module('angular-auth-app', [
   'ngAnimate',
   'ngCookies',])
   .constant('baseUrl', 'http://localhost:3000')
-  .config(['baseUrl','$routeProvider', '$authProvider', function(baseUrl, $routeProvider, $authProvider){
+  .config([
+  'baseUrl',
+  '$stateProvider',
+  '$routeProvider',
+  '$authProvider',
+  function(baseUrl, $stateProvider, $routeProvider, $authProvider){
 
          $authProvider.configure({
            apiUrl: baseUrl + '/api',
@@ -25,12 +30,25 @@ angular.module('angular-auth-app', [
           }
          });
 
-         $routeProvider.when('/',{
-           controller: "HomeCtrl"
-         }).when('/:status', {
-           controller: "HomeCtrl"
-         }).otherwise({
-           redirectTo: '/'
-         });
+        //  $routeProvider.when('/',{
+        //    controller: "HomeCtrl"
+        //  }).when('/:status', {
+        //    controller: "HomeCtrl"
+        //  }).otherwise({
+        //    redirectTo: '/'
+        //  });
+
+        $stateProvider
+        .state('home', {
+          url: '/',
+          // templateUrl: 'home/_home.html',
+          controller: 'MainCtrl',
+          // onEnter: function() {
+          //   $('#lltv-app-content').hide();
+          //   $('#landing-homepage').show();
+          // }
+        })
+
+
 
        }]);
