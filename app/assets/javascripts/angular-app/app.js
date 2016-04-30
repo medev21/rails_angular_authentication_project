@@ -1,4 +1,5 @@
 angular.module('angular-auth-app', [
+  'ui.router',
   'ui.bootstrap',
   'ngRoute',
   'ngResource',
@@ -12,7 +13,9 @@ angular.module('angular-auth-app', [
   '$stateProvider',
   '$routeProvider',
   '$authProvider',
-  function(baseUrl, $stateProvider, $routeProvider, $authProvider){
+  '$locationProvider',
+  function(baseUrl, $stateProvider, $routeProvider, $authProvider, $locationProvider){
+        $locationProvider.html5Mode(true); //this removes the # on the url, add the base to application
 
          $authProvider.configure({
            apiUrl: baseUrl + '/api',
@@ -30,25 +33,23 @@ angular.module('angular-auth-app', [
           }
          });
 
-        //  $routeProvider.when('/',{
-        //    controller: "HomeCtrl"
-        //  }).when('/:status', {
-        //    controller: "HomeCtrl"
-        //  }).otherwise({
-        //    redirectTo: '/'
-        //  });
 
         $stateProvider
         .state('home', {
-          url: '/',
-          // templateUrl: 'home/_home.html',
-          controller: 'MainCtrl',
-          // onEnter: function() {
-          //   $('#lltv-app-content').hide();
-          //   $('#landing-homepage').show();
-          // }
+          url: '/'
         })
-
-
+        .state('posts',{
+          templateUrl: 'angular-app/posts/postLayout.html',
+          controller: 'PostCtrl',
+        })
+        .state('posts.show',{
+          url: '/posts',
+          views: {
+            postView: {
+              templateUrl: 'angular-app/posts/post.html',
+              controller: 'PostCtrl'
+            }
+          }
+        })
 
        }]);

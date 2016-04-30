@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
 
-  def index
-  end
+  # def index
+  #   render layout: 'application'
+  # end
 end

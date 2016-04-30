@@ -2,13 +2,17 @@
 <html>
 <head>
   <title>RailsAngularAuthenticationProject</title>
+  <base href="/">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body ng-app="angular-auth-app">
   <div ng-include="'angular-app/nav/nav.html'"></div>
-  <%= yield %>
+  <div class="" ng-controller="MainCtrl">
+    <ui-view><%= yield %></ui-view>
+
+  </div>
 
 </body>
 </html>

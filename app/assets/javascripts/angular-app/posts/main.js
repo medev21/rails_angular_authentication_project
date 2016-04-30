@@ -1,5 +1,5 @@
 angular.module('angular-auth-app')
-       .controller('MainCtrl',[
+       .controller('PostCtrl',[
          'Post',
          '$rootScope',
          '$scope',
@@ -24,20 +24,21 @@ angular.module('angular-auth-app')
 
         // when the user logs in, fetch the posts
         $rootScope.$on('auth:login-success', function(ev, user) {
-          $location.path("/");
+          $location.path("/posts");
           post_query();
         });
 
        // when the user logs out, remove the posts
        $rootScope.$on('auth:logout-success', function(ev) {
          $scope.posts = null;
+         $location.path("/");
        });
 
        $rootScope.$on('auth:registration-email-success', function(ev, message) {
           // alert("A registration email was sent to " + message.email);
           post_query();
 
-          $location.path("/");
+          $location.path("/posts");
         });
 
         $rootScope.$on('auth:validation-success', function(ev, userData) {
