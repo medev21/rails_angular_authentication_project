@@ -11,7 +11,7 @@ function($rootScope, $scope, loginModalService, $location){
 
   $scope.isActive = true;
 
-  console.log($rootScope);
+  // console.log($rootScope);
 
   $scope.openModal = function(loginType){
     loginModalService.openModal(loginType);

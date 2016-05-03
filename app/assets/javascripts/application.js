@@ -22,5 +22,4 @@
 //= require angular-cookies
 //= require ng-token-auth
 //= require angular-bootstrap
-//= require turbolinks
 //= require_tree .
