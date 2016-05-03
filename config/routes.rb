@@ -7,5 +7,10 @@ Rails.application.routes.draw do
 
   root to: 'home#home'
 
+  get '/' => 'home#home'
+  get '/home' => 'home#home'
   get '/posts' => 'home#home'
+
+
+
 end

@@ -1,10 +1,11 @@
 var app = angular.module('angular-auth-app');
 
 app.controller('loginModalCtrl', [
+  '$rootScope',
   '$scope',
   'loginModalService',
   '$auth',
-  function($scope, loginModalService, $auth){
+  function($rootScope, $scope, loginModalService, $auth){
 
     $scope.close = function(){
       loginModalService.closeModal();

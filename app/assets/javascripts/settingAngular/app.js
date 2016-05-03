@@ -4,6 +4,7 @@ angular.module('angular-auth-app', [
   'ngRoute',
   'ngResource',
   'templates',
+  'ipCookie',
   'ng-token-auth',
   'ngAnimate',
   'ngCookies',])
@@ -11,10 +12,11 @@ angular.module('angular-auth-app', [
   .config([
   'baseUrl',
   '$stateProvider',
-  '$routeProvider',
-  '$authProvider',
+  // '$routeProvider',
   '$locationProvider',
-  function(baseUrl, $stateProvider, $routeProvider, $authProvider, $locationProvider){
+  '$urlRouterProvider',
+  '$authProvider',
+  function(baseUrl, $stateProvider, $locationProvider, $urlRouterProvider, $authProvider){
         $locationProvider.html5Mode(true); //this removes the # on the url, add the base to application
 
          $authProvider.configure({
@@ -34,22 +36,30 @@ angular.module('angular-auth-app', [
          });
 
 
+       $urlRouterProvider.otherwise('/');
+
         $stateProvider
         .state('home', {
-          url: '/'
+          url: '/',
+          // controller: 'MainCtrl',
         })
         .state('posts',{
-          templateUrl: 'angular-app/posts/postLayout.html',
-          controller: 'PostCtrl',
+          templateUrl: 'settingAngular/posts/postLayout.html',
         })
         .state('posts.show',{
           url: '/posts',
           views: {
             postView: {
-              templateUrl: 'angular-app/posts/post.html',
+              templateUrl: 'settingAngular/posts/post.html',
               controller: 'PostCtrl'
             }
           }
-        })
+        });
+
+
+
+        // $routeProvider.otherwise({
+        //    redirectTo: '/'
+        //  });
 
        }]);

@@ -8,10 +8,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body ng-app="angular-auth-app">
-  <div ng-include="'angular-app/nav/nav.html'"></div>
-  <div class="" ng-controller="MainCtrl">
-    <ui-view><%= yield %></ui-view>
-
+  <div ng-include="'settingAngular/nav/_nav.html'" ng-controller="NavCtrl"></div>
+  <div class="" ng-controller="MainCtrl" ng-show="isActive">
+    <div ui-view><%= yield %></div ui-view>
   </div>
 
 </body>

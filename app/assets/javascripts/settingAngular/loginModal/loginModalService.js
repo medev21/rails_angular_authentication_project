@@ -8,10 +8,10 @@ app.service('loginModalService', ['$uibModal', function($uibModal){
 
   this.openModal = function(loginType){
     if(loginType == 'login'){
-      var templateUrl = "angular-app/loginModal/_login.html";
+      var templateUrl = "settingAngular/loginModal/_login.html";
     }
     else if(loginType == 'register'){
-      var templateUrl = "angular-app/loginModal/_register.html";
+      var templateUrl = "settingAngular/loginModal/_register.html";
     }
     else{
       alert('something went wrong!');
