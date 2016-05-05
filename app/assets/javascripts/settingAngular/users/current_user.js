@@ -1,48 +1,25 @@
 angular.module('angular-auth-app').factory('currentUser', [
 '$rootScope',
 '$cookieStore',
-function($rootScope, $cookieStore){
+'$auth',
+function($rootScope, $cookieStore, $auth){
   var userObj = {};
 
   userObj.getUserObj = function(){
-    var userObj = $cookieStore.get('userObj');
+    var userCookie = $cookieStore.get('userObj');
 
-    if(userObj){
-      return userObj;
-    }
-  }
-
-
-}
-]);
-
-
-
-angular.module('lltv')
-.factory('currentUser', [
-'$rootScope',
-'$auth',
-'$http',
-'$cookieStore',
-function($rootScope, $auth, $http, $cookieStore) {
-  var userObject = {};
-
-  userObject.getUserObj = function(){
-    var userObj = $cookieStore.get('userObj');
-
-    if(userObj){
-      return userObj;
-    }else{
-      console.log('you are not logged in!');
+    if(userCookie){
+      return userCookie;
     }
   }
 
   var signOut = function() {
     $auth.signOut()
       .then(function(resp) {
-        userObject = null;
+        userObj = null;
+        $cookieStore.remove('userObj'); //remove current userObj cookie
         console.log('Sign OUT - current_user', resp);
-        // localStorage.removeItem("username");
+
       })
       .catch(function(resp) {
         // alert("signOut error");
@@ -50,7 +27,8 @@ function($rootScope, $auth, $http, $cookieStore) {
       });
   }
 
-  userObject.signOut = signOut;
-  return userObject;
+  userObj.signOut = signOut;
+  return userObj;
 
-}]);
+}
+]);

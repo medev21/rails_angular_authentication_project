@@ -7,14 +7,24 @@ angular.module('angular-auth-app')
 '$scope',
 'loginModalService',
 '$location',
-function($rootScope, $scope, loginModalService, $location){
+'currentUser',
+'$cookieStore',
+function($rootScope, $scope, loginModalService, $location, currentUser, $cookieStore){
 
   $scope.isActive = true;
 
-  // console.log($rootScope);
+  var userObj = currentUser.getUserObj();
+
+  $scope.currentUser = userObj;
+
+  // console.log($scope.user);
 
   $scope.openModal = function(loginType){
     loginModalService.openModal(loginType);
+  }
+
+  $scope.signOut = function(){
+    currentUser.signOut();
   }
 
   $rootScope.$on('auth:login-success', function(ev, user) {
@@ -26,6 +36,7 @@ function($rootScope, $scope, loginModalService, $location){
  // when the user logs out, remove the posts
  $rootScope.$on('auth:logout-success', function(ev) {
    $scope.posts = null;
+   $scope.signOut();
    $location.path("/");
  });
 

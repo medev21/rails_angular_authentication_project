@@ -23,7 +23,7 @@ angular.module('angular-auth-app', [
            apiUrl: baseUrl + '/api',
 
           handleLoginResponse: function(response) {
-            return response;
+            return response.data;
           },
 
           // handleAccountUpdateResponse: function(response) {
@@ -31,7 +31,7 @@ angular.module('angular-auth-app', [
           // },
 
           handleTokenValidationResponse: function(response) {
-            return response;
+            return response.data;
           }
          });
 
