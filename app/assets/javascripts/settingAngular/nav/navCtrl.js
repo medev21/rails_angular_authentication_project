@@ -18,6 +18,7 @@ function($rootScope, $scope, loginModalService, $location){
   }
 
   $rootScope.$on('auth:login-success', function(ev, user) {
+    $cookieStore.put('userObj', user);
     $location.path("/posts");
     // post_query();
   });
