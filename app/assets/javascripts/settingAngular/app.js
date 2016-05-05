@@ -12,11 +12,11 @@ angular.module('angular-auth-app', [
   .config([
   'baseUrl',
   '$stateProvider',
-  // '$routeProvider',
+  '$routeProvider',
   '$locationProvider',
   '$urlRouterProvider',
   '$authProvider',
-  function(baseUrl, $stateProvider, $locationProvider, $urlRouterProvider, $authProvider){
+  function(baseUrl, $stateProvider, $routeProvider, $locationProvider, $urlRouterProvider, $authProvider){
         $locationProvider.html5Mode(true); //this removes the # on the url, add the base to application
 
          $authProvider.configure({
@@ -56,10 +56,24 @@ angular.module('angular-auth-app', [
           }
         });
 
+        // $routeProvider
+        //     .when('/publicurl', {})
+        //     .when('/loginurl', {})
+        //     .when('/unauthorize', {})
+        //     .otherwise({redirectTo: '/'});
+        // })
+        // .run(function ($logincheck, $location) {
+        //   //console.log("Into run mode");
+        //   console.log("Userid 5 is logged in: ", $logincheck(5));
+        //   console.log("Userid 0  logged in: ", $logincheck(0));
+        //
+        //   //now redirect to appropriate path based on login status
+        //   if ($logincheck(0)) {
+        //     //$location.path('/loginurl'); or
+        //   }
+        //   else {
+        //     //$location.path('/publicurl'); or
+        //   }
 
-
-        // $routeProvider.otherwise({
-        //    redirectTo: '/'
-        //  });
 
        }]);

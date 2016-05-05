@@ -17,7 +17,7 @@ function($rootScope, $scope, loginModalService, $location, currentUser, $cookieS
 
   $scope.currentUser = userObj;
 
-  // console.log($scope.user);
+  console.log($scope.currentUser);
 
   $scope.openModal = function(loginType){
     loginModalService.openModal(loginType);

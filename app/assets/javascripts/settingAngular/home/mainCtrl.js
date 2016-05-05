@@ -4,9 +4,19 @@ angular.module('angular-auth-app')
          '$rootScope',
          '$scope',
          '$location',
-         function(Post, $rootScope, $scope, $location){
+         'currentUser',
+         '$state',
+         function(Post, $rootScope, $scope, $location, currentUser, $state){
 
            $scope.isActive = true;
+
+           if(currentUser.getUserObj()){
+             console.log('i am here');
+             $state.go('posts.show');
+           }
+           else{
+             console.log('nothing;')
+           }
 
           //  console.log($rootScope);
           //  var post_query = function(){
