@@ -10,9 +10,13 @@ angular.module('angular-auth-app')
 
            $scope.isActive = true;
 
+
            if(currentUser.getUserObj()){
-             console.log('i am here');
-             $state.go('posts.show');
+            //  console.log(currentUser.getUserObj().id);
+             console.log('hey');
+
+            //  $location.path('/');
+            // $state.go('posts.show');
            }
            else{
              console.log('nothing;')

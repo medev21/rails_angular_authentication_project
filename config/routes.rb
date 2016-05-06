@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   root to: 'home#home'
 
   get '/' => 'home#home'
-  get '/home' => 'home#home'
+  get '/about' => 'home#home'
+  get '/profile' => 'home#home'
   get '/posts' => 'home#home'
 
 

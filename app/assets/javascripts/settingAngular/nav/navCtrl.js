@@ -15,9 +15,9 @@ function($rootScope, $scope, loginModalService, $location, currentUser, $cookieS
 
   var userObj = currentUser.getUserObj();
 
-  $scope.currentUser = userObj;
+  $scope.current_user = userObj;
 
-  console.log($scope.currentUser);
+  console.log($scope.current_user);
 
   $scope.openModal = function(loginType){
     loginModalService.openModal(loginType);
@@ -27,7 +27,18 @@ function($rootScope, $scope, loginModalService, $location, currentUser, $cookieS
     currentUser.signOut();
   }
 
+  // $scope.userStatus = userObj.signedIn;
+
+  $scope.userStatus = function(){
+    return ($scope.user) ? true : false;
+  }
+
+  console.log($scope.user);
+
+
+
   $rootScope.$on('auth:login-success', function(ev, user) {
+    // $scope.isLoggedIn = true;
     $cookieStore.put('userObj', user);
     $location.path("/posts");
     // post_query();
@@ -36,14 +47,15 @@ function($rootScope, $scope, loginModalService, $location, currentUser, $cookieS
  // when the user logs out, remove the posts
  $rootScope.$on('auth:logout-success', function(ev) {
    $scope.posts = null;
-   $scope.signOut();
+   $cookieStore.remove('userObj');
    $location.path("/");
  });
 
- $rootScope.$on('auth:registration-email-success', function(ev, message) {
+ $rootScope.$on('auth:registration-email-success', function(ev, user) {
     // alert("A registration email was sent to " + message.email);
     // post_query();
-
+    $cookieStore.remove('userObj');
+    $cookieStore.put('userObj', user);
     $location.path("/posts");
   });
 

@@ -35,13 +35,30 @@ angular.module('angular-auth-app', [
           }
          });
 
-
-       $urlRouterProvider.otherwise('/');
-
         $stateProvider
         .state('home', {
           url: '/',
           // controller: 'MainCtrl',
+        })
+        .state('aboutPage', {
+          url: '/about',
+          templateUrl: 'settingAngular/about/aboutPage.html'
+        })
+        .state('profilePage', {
+          templateUrl: 'settingAngular/about/profileLayout.html'
+        })
+        .state('profilePage.show',{
+          url: '/profile',
+          views: {
+            profileView: {
+              templateUrl: 'settingAngular/about/profilePage.html'
+            }
+          },
+          resolve: {
+            auth: function($auth) {
+              return $auth.validateUser();
+            }
+          }
         })
         .state('posts',{
           templateUrl: 'settingAngular/posts/postLayout.html',
@@ -55,6 +72,8 @@ angular.module('angular-auth-app', [
             }
           }
         });
+
+        $urlRouterProvider.otherwise('/');
 
         // $routeProvider
         //     .when('/publicurl', {})
