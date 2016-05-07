@@ -10,6 +10,9 @@ function($rootScope, $cookieStore, $auth){
 
     if(userCookie){
       return userCookie;
+    }else{
+      console.log('you are not logged in');
+      return false;
     }
   }
 
@@ -17,7 +20,7 @@ function($rootScope, $cookieStore, $auth){
     $auth.signOut()
       .then(function(resp) {
         userObj = null;
-        $cookieStore.remove('userObj'); //remove current userObj cookie
+        // $cookieStore.remove('userObj'); //remove current userObj cookie
         console.log('Sign OUT - current_user', resp);
 
       })

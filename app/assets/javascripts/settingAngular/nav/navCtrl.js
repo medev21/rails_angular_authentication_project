@@ -11,13 +11,11 @@ angular.module('angular-auth-app')
 '$cookieStore',
 function($rootScope, $scope, loginModalService, $location, currentUser, $cookieStore){
 
-  $scope.isActive = true;
+  // $scope.isActive = true;
 
   var userObj = currentUser.getUserObj();
 
-  $scope.current_user = userObj;
-
-  console.log($scope.current_user);
+  $scope.current_user = userObj; //send user object to scope
 
   $scope.openModal = function(loginType){
     loginModalService.openModal(loginType);
@@ -27,19 +25,12 @@ function($rootScope, $scope, loginModalService, $location, currentUser, $cookieS
     currentUser.signOut();
   }
 
-  // $scope.userStatus = userObj.signedIn;
-
-  $scope.userStatus = function(){
-    return ($scope.user) ? true : false;
-  }
-
-  console.log($scope.user);
-
+  $scope.userStatus = userObj.signedIn; //by default is false cause user is not logged in!
 
 
   $rootScope.$on('auth:login-success', function(ev, user) {
-    // $scope.isLoggedIn = true;
     $cookieStore.put('userObj', user);
+    $scope.userStatus = true;
     $location.path("/posts");
     // post_query();
   });
@@ -48,6 +39,7 @@ function($rootScope, $scope, loginModalService, $location, currentUser, $cookieS
  $rootScope.$on('auth:logout-success', function(ev) {
    $scope.posts = null;
    $cookieStore.remove('userObj');
+   $scope.userStatus = false;
    $location.path("/");
  });
 
