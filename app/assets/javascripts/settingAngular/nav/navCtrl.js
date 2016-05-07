@@ -48,6 +48,7 @@ function($rootScope, $scope, loginModalService, $location, currentUser, $cookieS
     // post_query();
     $cookieStore.remove('userObj');
     $cookieStore.put('userObj', user);
+    $scope.userStatus = true;
     $location.path("/posts");
   });
 
