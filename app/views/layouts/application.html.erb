@@ -9,7 +9,7 @@
 </head>
 <body ng-app="angular-auth-app">
   <div ng-include="'settingAngular/nav/_nav.html'" ng-controller="NavCtrl"></div>
-  <div class="" >
+  <div ng-controller="MainCtrl">
     <div ui-view><%= yield %></div ui-view>
   </div>
 

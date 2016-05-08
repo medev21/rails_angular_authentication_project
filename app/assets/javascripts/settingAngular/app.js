@@ -39,19 +39,24 @@ angular.module('angular-auth-app', [
         .state('home', {
           url: '/',
           // controller: 'MainCtrl',
+          resolve: {
+            auth: function($auth) {
+              return !$auth.validateUser();
+            }
+          }
         })
         .state('aboutPage', {
           url: '/about',
           templateUrl: 'settingAngular/about/aboutPage.html'
         })
         .state('profilePage', {
-          templateUrl: 'settingAngular/about/profileLayout.html'
+          templateUrl: 'settingAngular/profile/profileLayout.html'
         })
         .state('profilePage.show',{
           url: '/profile',
           views: {
             profileView: {
-              templateUrl: 'settingAngular/about/profilePage.html'
+              templateUrl: 'settingAngular/profile/profilePage.html'
             }
           },
           resolve: {
