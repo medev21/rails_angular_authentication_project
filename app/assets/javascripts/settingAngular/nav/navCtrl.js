@@ -53,15 +53,13 @@ function($rootScope, $scope, loginModalService, $location, currentUser, $cookieS
   });
 
   $rootScope.$on('auth:validation-success', function(ev, userData) {
-    // console.log("validation event: ", ev);
-    // console.log("validation: ", userData);
-    // post_query();
 
   });
 
+  $rootScope.$on('auth:validateUser', function(ev, userData) {
+    alert("THERE");
+  });
 
- // will get a "401 Unauthorized" if the user is not authenticated
-  // post_query();
 
   $rootScope.$on('$routeChangeSuccess',function(){
     console.log('location is now', $location.path())
