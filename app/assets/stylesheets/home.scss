@@ -1,3 +1,28 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// $font: avenir-black, sans-serif;
+//
+// body{
+//   padding: 0;
+//   font-family: $font;
+// }
+
+
+@font-face {
+    font-family: "test-font";
+    // src: url(/assets/SurroundingRegular.otf) format("truetype");
+    // src: url(/assets/Florsn01.ttf) format("truetype");
+    src: url(/assets/SIPLDB.TTF) format("truetype");
+    // src: url(/assets/NewCicleSemi.ttf) format("truetype");
+
+
+}
+
+body{
+  font-family: "test-font";
+  font-weight: 900;
+  text-transform: uppercase;
+}
